@@ -1,14 +1,20 @@
-import React from 'react'
-import css from './Item.module.css'
+import React from 'react';
+import css from './Item.module.css';
+import { countBy } from 'lodash';
 
-function Item({ name }) {
+function Item({ name, scoops, add, remove }) {
+    const scoopsByCount = countBy(scoops);
+
     return (
         <li className={css.item}>
             <span>{name}</span>
-            <span className={css.quantity}>2</span>
+            {scoopsByCount[name] >= 0 ? (
+                <span className={css.quantity}>{scoopsByCount[name]}</span>
+            ) : null}
             <div className="right">
-                <button type="button" className={[css.plus, 'rounded'].join(' ')}>+</button>
-                <button type="button" className={[css.minus, 'rounded'].join(' ')}>-</button>
+                {/* For send function referance use add.bind */}
+                <button type="button" onClick={add.bind(this, name)} className={[css.plus, 'rounded'].join(' ')}>+</button>
+                <button type="button" onClick={remove.bind(this, name)} className={[css.minus, 'rounded'].join(' ')}>-</button>
             </div>
         </li>
     )
