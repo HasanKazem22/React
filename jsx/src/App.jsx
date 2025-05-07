@@ -35,7 +35,7 @@ function App() {
         <p>Hello! I am {name}, a passionate {profession}. I love building web application that solves real world user problems.</p>
       </section>
 
-      {/* Profile Section */}
+      {/* Projects Section */}
       <section id='projects' className='projects'>
         <h2>Projects</h2>
         <div className="projects-list">
